@@ -1,0 +1,26 @@
+name: Bug report
+description: A wrong time, a confusing result, or something that doesn't work
+labels: [bug]
+body:
+  - type: input
+    id: link
+    attributes:
+      label: Share link for the plan
+      description: Use "Share link" in fairhour. It contains only what you entered.
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What fairhour showed
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and version
+      placeholder: Firefox 131 on Windows 11

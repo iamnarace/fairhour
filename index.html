@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Plan a recurring meeting across time zones that rotates fairly, so nobody always takes the 6 am call. Daylight-saving aware, with calendar export." />
+    <meta name="theme-color" content="#15213b" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="src/styles.css" />
+    <title>fairhour · fair meeting times across time zones</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#plan">Skip to the plan</a>
+    <header class="masthead">
+      <div class="brand"><span class="sun" aria-hidden="true"></span>fairhour</div>
+      <p class="tagline">Rotate a recurring meeting so nobody always takes the 6 am call.</p>
+    </header>
+
+    <main class="layout">
+      <form class="settings" id="settings" novalidate>
+        <section aria-labelledby="team-heading">
+          <h2 id="team-heading">The team</h2>
+          <div id="team"></div>
+          <button type="button" class="button" id="add-person">Add a person</button>
+        </section>
+
+        <section aria-labelledby="series-heading">
+          <h2 id="series-heading">The meeting</h2>
+          <div class="grid-fields">
+            <label class="field wide">
+              <span>Meeting name</span>
+              <input id="title" autocomplete="off" maxlength="120" />
+            </label>
+            <label class="field wide">
+              <span>Organiser’s time zone</span>
+              <input id="anchor-zone" list="zones" autocomplete="off" spellcheck="false" />
+              <small class="field-error" id="anchor-zone-error" hidden></small>
+            </label>
+            <label class="field">
+              <span>First meeting</span>
+              <input id="first-date" type="date" required />
+            </label>
+            <label class="field">
+              <span>Repeats</span>
+              <select id="every-days">
+                <option value="7">Weekly</option>
+                <option value="14">Fortnightly</option>
+                <option value="28">Every 4 weeks</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Meetings</span>
+              <input id="count" type="number" min="1" max="52" inputmode="numeric" />
+            </label>
+            <label class="field">
+              <span>Length</span>
+              <select id="duration">
+                <option value="15">15 min</option>
+                <option value="30">30 min</option>
+                <option value="45">45 min</option>
+                <option value="60">1 hour</option>
+                <option value="90">1½ hours</option>
+                <option value="120">2 hours</option>
+              </select>
+            </label>
+          </div>
+          <fieldset class="rotation">
+            <legend>Rotate between</legend>
+            <label><input type="radio" name="rotation" value="1" /> 1 time (fixed)</label>
+            <label><input type="radio" name="rotation" value="2" /> 2 times</label>
+            <label><input type="radio" name="rotation" value="3" /> 3 times</label>
+          </fieldset>
+        </section>
+
+        <p class="fine-print">
+          Times are scored in each person’s own hours: before or after work costs 1 point an hour, weekends 2,
+          night 5. fairhour picks the rotation that keeps the worst-off person’s total lowest.
+        </p>
+        <button type="button" class="button subtle" id="load-example">Load the example team</button>
+      </form>
+
+      <section class="plan" id="plan" aria-live="polite" aria-labelledby="plan-heading">
+        <h2 id="plan-heading" class="visually-hidden">The plan</h2>
+        <div id="plan-body"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>
+        fairhour runs entirely in your browser using your device’s time-zone data. Plans are saved on this device;
+        shared links carry the plan in the part of the address that is never sent to a server.
+        <a href="https://github.com/iamnarace/fairhour">Source on GitHub</a>
+      </p>
+    </footer>
+
+    <datalist id="zones"></datalist>
+    <div class="toast-region" role="status" aria-live="polite"></div>
+    <noscript><p class="noscript">fairhour needs JavaScript to plan meetings.</p></noscript>
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>

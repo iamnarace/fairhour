@@ -1,0 +1,17 @@
+{
+  "name": "fairhour",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Plan recurring meetings across time zones that rotate fairly. DST-aware, with .ics export. No dependencies.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "test": "node --test",
+    "test:e2e": "python3 test/e2e.py",
+    "check": "node --check src/app.js && node --check src/dom.js && node --check src/tz.js && node --check src/cost.js && node --check src/plan.js && node --check src/ics.js && node --check src/state.js"
+  }
+}

@@ -1,0 +1,18 @@
+# Dependencies (fairhour has none, but contributors' tools may create these)
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+
+# Downloaded calendars and local output
+*.ics
+test-results/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+.env
+.env.*
