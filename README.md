@@ -1,5 +1,7 @@
 # fairhour
 
+[![CI](https://github.com/iamnarace/fairhour/actions/workflows/ci.yml/badge.svg)](https://github.com/iamnarace/fairhour/actions/workflows/ci.yml)
+
 **Plan a recurring meeting across time zones that rotates fairly, so nobody always takes the 6 am call.** fairhour scores every possible start time on every actual meeting date (daylight-saving changes included) against each person's own working hours and sleep, then finds the fixed time or 2–3-slot rotation that keeps the *worst-off* person's total inconvenience as low as possible. Export the whole series to your calendar in one file.
 
 ![fairhour planning a weekly sync for Sydney, London, New York and Bengaluru](docs/screenshots/plan-desktop.png)
